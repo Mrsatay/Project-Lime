@@ -28,6 +28,9 @@
             <li>
                 <a href="file-manager.html"><i class="material-icons">cloud_queue</i>Iuran</a>
             </li>
+            <li>
+                <a href="{{ route('citizen.index') }}"><i class="material-icons">person</i>Citizen</a>
+            </li>
         </ul>
     </div>
 </div>
