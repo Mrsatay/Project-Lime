@@ -10,7 +10,7 @@
         <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         
         <!-- Title -->
-        <title>Lime - Responsive Admin Dashboard Template</title>
+        <title>Register Page</title>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -41,9 +41,9 @@
                                     <div class="form-group">
                                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp2" placeholder="Confirm email">
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="userName" aria-describedby="userName" placeholder="Username">
                                     </div>
@@ -55,10 +55,10 @@
                                     </div>
                                     <div class="custom-control custom-checkbox form-group">
                                         <input type="checkbox" class="custom-control-input" id="exampleCheck1">
-                                        <label class="custom-control-label" for="exampleCheck1">I Agree with <a href="#">Terms &amp; Policies</a></label>
+                                        {{-- <label class="custom-control-label" for="exampleCheck1">I Agree with <a href="#">Terms &amp; Policies</a></label> --}}
                                     </div>
-                                    <a href="#" class="btn btn-primary">Sign Up</a>
-                                    <a href="sign-in.html" class="btn btn-secondary">Sign In</a>
+                                    <a href="#" class="float-right btn btn-primary">Sign Up</a>
+                                    <a href="{{ route('login') }}" class="float-left forgot-link">Sign in</a>
                                 </form>
                             </div>
                         </div>

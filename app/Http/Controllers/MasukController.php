@@ -15,4 +15,5 @@ class MasukController extends Controller
     {
         return view('SignUp');
     }
+    
 }

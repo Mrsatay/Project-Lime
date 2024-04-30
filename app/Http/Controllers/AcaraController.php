@@ -30,7 +30,7 @@ class AcaraController extends Controller
         $validator = Validator::make($request->all(),[
             'judul'                     => 'required',
             'deskripsi'                 => 'required',
-            'tanggal_penyelenggaraan'   => 'required',
+            'publish_at'                => 'required',
             'tipe_acara'                => 'required',
         ]);
 
@@ -39,7 +39,7 @@ class AcaraController extends Controller
 
         $data['judul'] = $request->judul;
         $data['deskripsi'] = $request->deskripsi;
-        $data['tanggal_penyelenggaraan'] = $request->tanggal_penyelenggaraan;
+        $data['publish_at'] = $request->publish_at;
         $data['tipe_acara'] = $request->tipe_acara;
 
         Acara::create($data);

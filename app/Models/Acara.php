@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Acara extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'judul', // Tambahkan 'judul' ke dalam daftar fillable
+        'deskripsi',
+        'tipe_acara',
+        // Kolom lain yang ingin Anda masukkan ke dalam fillable
+    ];
 }

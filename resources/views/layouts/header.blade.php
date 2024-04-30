@@ -17,11 +17,11 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search for projects, apps, pages..." aria-label="Search">
             </form>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
+                {{-- <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle theme-settings-link" href="#">
                         <i class="material-icons">layers</i>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons">more_vert</i>
@@ -30,7 +30,7 @@
                         <li><a class="dropdown-item" href="#">Account</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li class="divider"></li>
-                        <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        <li><a class="dropdown-item" href="{{ route('login') }}">Log Out</a></li>
 
                     </ul>
                 </li>

@@ -12,7 +12,7 @@
         <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         
         <!-- Title -->
-        <title>Lime - Responsive Admin Dashboard Template</title>
+        <title>Acara View</title>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -81,11 +81,11 @@
                             <div class="page-title">
                                 <nav aria-label="breadcrumb">
                                   <ol class="breadcrumb breadcrumb-separator-1">
-                                    <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Acara</li>
+                                    <li class="breadcrumb-item"><a href="#">Acara</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">View</li>
                                   </ol>
                                 </nav>
-                                <h3>Forms</h3>
+                                <h3>View Acara</h3>
                                 
                             </div>
                         </div>
@@ -121,14 +121,22 @@
                                                 
                                             <div role="tabpanel" class="tab-pane fade in active" id="all">
                                                 <div class="card mb-3">
-                                                    <img src="..." class="card-img-top" alt="...">
+
+                                                    {{-- create default image if RW not input any image --}}
+                                                    @if ($d->image)
+                                                        <img src="{{ $d->image }}" class="card-img-top img-fluid" alt="...">
+                                                    @else
+                                                        <img src="{{ asset('lime/theme/assets/images/not-available.jpeg') }}" class="card-img-top img-fluid" alt="Default Image">
+                                                    @endif
+
                                                     <div class="card-body">
-                                                      <h5 class="card-title">{{ $d->judul }}</h5>
-                                                      <p class="card-text">{{ $d->deskripsi }}</p>
-                                                      <p class="card-text"><small class="text-muted">{{ $d->tanggal_penyelenggaraan }}</small></p>
+                                                        <h5 class="card-title">{{ $d->judul }}</h5>
+                                                        <p class="card-text">{{ $d->deskripsi }}</p>
+                                                        <p class="card-text"><small class="text-muted">{{ $d->tanggal_penyelenggaraan }}</small></p>
                                                     </div>
-                                                  </div>
+                                                </div>
                                             </div>
+                                            
                                             @endforeach
 
                                             <div role="tabpanel" class="tab-pane fade" id="Kegiatan">

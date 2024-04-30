@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('acaras', function (Blueprint $table) {
             $table->id();
-            $table->string('judul_acara',50);
+            $table->string('judul',50);
             $table->text('deskripsi');
-            $table->string('tipe_acara',20);
-            $table->string('image');
+            $table->enum('tipe_acara',['Informasi','Kegiatan']);
+            $table->string('image')->nullable();
             $table->timestamp('publish_at')->nullable();
             $table->timestamps();
         });

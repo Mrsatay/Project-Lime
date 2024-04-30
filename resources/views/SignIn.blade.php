@@ -10,7 +10,7 @@
         <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         
         <!-- Title -->
-        <title>Lime - Responsive Admin Dashboard Template</title>
+        <title>Login Page</title>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -46,11 +46,16 @@
                                     </div>
                                     <div class="custom-control custom-checkbox form-group">
                                         <input type="checkbox" class="custom-control-input" id="exampleCheck1">
-                                        <label class="custom-control-label" for="exampleCheck1">Remember</label>
+                                       
                                     </div>
-                                    <a href="#" class="float-left forgot-link">Forgot password?</a>
-                                    <a href="index.html" class="btn btn-primary float-right m-l-xxs">Sign In</a>
-                                    <a href="sign-up.html" class="btn btn-secondary float-right">Sign Up</a>
+                                    <div class="float-left forgot-link-container">
+                                        <a href="#" class="forgot-link">Forgot password?</a>
+                                        <br> <!-- Baris baru untuk menempatkan "Sign Up" di bawah "Forgot password?" -->
+                                        <a href="{{ route('register') }}" class="forgot-link">Sign Up</a>
+                                    </div>
+                                    <a href="{{ route('home') }}" class="btn btn-primary float-right m-l-xxs">Sign In</a>
+                                    
+                                    
                                 </form>
                             </div>
                         </div>
