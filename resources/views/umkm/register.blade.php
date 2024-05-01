@@ -110,6 +110,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Daftar Ulang UMKM</h5>
                                     <p> </p>
+
+                                    
                                     <form action="{{ route('acara.store') }}" method="POST">
                                         @csrf
 

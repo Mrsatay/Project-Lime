@@ -37,29 +37,35 @@
                         <div class="card login-box">
                             <div class="card-body">
                                 <h5 class="card-title">Sign Up</h5>
-                                <form>
+
+
+                                <form action="{{ route('user.store') }}" method="POST">
+                                    @csrf
+
                                     <div class="form-group">
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        @error('email')
+                                            <small>{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp2" placeholder="Confirm email">
-                                    </div> --}}
+                                    
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="userName" aria-describedby="userName" placeholder="Username">
+                                        <input type="text" name="username" class="form-control" id="userName" aria-describedby="userName" placeholder="Username">
+                                        @error('username')
+                                            <small>{{ $message }}</small>
+                                        @enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        @error('password')
+                                            <small>{{ $message }}</small>
+                                        @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password">
-                                    </div>
-                                    <div class="custom-control custom-checkbox form-group">
-                                        <input type="checkbox" class="custom-control-input" id="exampleCheck1">
-                                        {{-- <label class="custom-control-label" for="exampleCheck1">I Agree with <a href="#">Terms &amp; Policies</a></label> --}}
-                                    </div>
-                                    <a href="#" class="float-right btn btn-primary">Sign Up</a>
-                                    <a href="{{ route('login') }}" class="float-left forgot-link">Sign in</a>
+                                    <button type="submit" class="float-right btn btn-primary">Sign Up</button>
+                                    <a href="{{ route('login') }}" class="float-left forgot-link">Sudah Punya Akun?</a>
                                 </form>
+
+
                             </div>
                         </div>
                     </div>
