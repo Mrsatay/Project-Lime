@@ -112,9 +112,13 @@
                                         <div class="col-xl">
                                             <div class="card">
                                                 <div class="card-body">
+
+
                                                     <h5 class="card-title">Data Kartu Keluarga</h5>
                                                     <p>Berikut adalah Data Data Kartu Keluarga dari RW 003</code>.</p>
+                                                    <a href="{{ route('rt.create') }}" class="btn btn-primary key"> tambah </a>
                                                     <div class="table-responsive">
+
                                                         <table class="table">
                                                             <thead>
                                                                 <tr>
@@ -127,34 +131,54 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach ($data as $d)
                                                                 <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td>Budi Santoso</td>
-                                                                    <td>05</td>
-                                                                    <td>2022-2026</td>
-                                                                    
+                                                                        
+                                                                    <th scope="row">{{ $d->rt_id }}</th>
+                                                                    <td>{{ $d->nama_ketua }}</td>
+                                                                    <td>{{ $d->no_rt }}</td>
+                                                                    <td>{{ \Carbon\Carbon::parse($d->mulai_masa_jabatan)->format('Y') }}
+                                                                    - {{ \Carbon\Carbon::parse($d->berakhir_masa_jabatan)->format('Y') }}
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="{{route('rt.edit',['id' => $d->rt_id])}}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
+                                                                        <a data-toggle="modal" data-target="#exampleModalHapus{{ $d->rt_id }}" class="btn btn-danger"><i class="fas fa-trash-alt"> Hapus</i></a>
+                                                                    </td>
                                                                     
                                                                 </tr>
-                                                                <tr>
-                                                                    <th scope="row">2</th>
-                                                                    <td>Ani Rahayu</td>
-                                                                    <td>12</td>
-                                                                    <td>2023-2027</td>
-                                                                    
-                                                                   
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">3</th>
-                                                                    <td>Slamet Widodo</td>
-                                                                    <td>08</td>
-                                                                    <td>2021-2025</td>
-                                                                    
-                                                                    
-                                                                </tr>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="exampleModalHapus{{ $d->rt_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalCenterTitle">Konfirmasi Hapus Data</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <i class="material-icons">close</i>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+
+                                                                                apakah anda yakin ingin menghapus data? <b>{{ $d->nama_ketua }}</b>                                                                         </div>
+                                                                            <div class="modal-footer">
+                                                                                <form action="{{ route('rt.delete',['id'=> $d->rt_id]) }}" method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="Submit" class="btn btn-primary">Konfirmasi</button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                @endforeach
                                                             </tbody>
                                                         </table>
-                                                    </div>      
+                                                    </div>  
                                                 </div>
+
+
                                             </div>
                                         </div>
                                     </div>

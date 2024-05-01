@@ -64,8 +64,6 @@
                                     <button type="submit" class="float-right btn btn-primary">Sign Up</button>
                                     <a href="{{ route('login') }}" class="float-left forgot-link">Sudah Punya Akun?</a>
                                 </form>
-
-
                             </div>
                         </div>
                     </div>

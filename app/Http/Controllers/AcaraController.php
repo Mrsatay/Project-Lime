@@ -46,4 +46,6 @@ class AcaraController extends Controller
 
         return redirect()->route('acara.view');
     }
+
+    
 }
