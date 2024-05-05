@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('acaras', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul',50);
-            $table->text('deskripsi');
-            $table->enum('tipe_acara',['Informasi','Kegiatan']);
-            $table->string('image')->nullable();
-            $table->timestamp('publish_at')->nullable();
+        Schema::create('rumahs', function (Blueprint $table) {
+            $table->id('rumah_id');
+            $table->string('nama_pemilik',30);
+            $table->text('alamat');
+            $table->integer('luas_bangunan');
+            $table->integer('luas_tanah');
+            $table->integer('jumlah_anggota_kk');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('acaras');
+        Schema::dropIfExists('rumahs');
     }
 };

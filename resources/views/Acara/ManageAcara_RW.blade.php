@@ -11,7 +11,7 @@
         <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         
         <!-- Title -->
-        <title>Lime - Responsive Admin Dashboard Template</title>
+        <title>Manage Citizen Data</title>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -108,54 +108,86 @@
                         <div class="col-xl">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Upload Acara</h5>
-                                    <p> </p>
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Acara</label>
-                                            <input type="form" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Judul">
-                                            {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">Deskripsi</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Masukkan Deskripsi"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Tanggal Penyelenggaraan</label>
-                                            <input type="date" class="form-control" id="exampleInputPassword1">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Tipe Acara</label>
-                                            <select class="form-control custom-select" id="exampleFormControlSelect1">
-                                                <option>Kegiatan</option>
-                                                <option>Informasi</option>
-                                            </select>
-                                        </div>
+                                    <div class="row">
+                                        <div class="col-xl">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Data ACARA</h5>
+                                                    <p>Berikut adalah Data Data ACARA dari RW 003</code>.</p>
+                                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                                        <a href="{{ route('acara.create') }}" class="btn btn-primary key ml-auto">Tambah</a>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                                
+                                                                <tr>
+                                                                    <th scope="col">No</th>
+                                                                    <th scope="col">Judul</th>
+                                                                    <th scope="col">Deskripsi</th>
+                                                                    <th scope="col">Tipe Acara</th>
+                                                                    <th scope="col">image</th>
+                                                                    
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach ($data as $d)
+                                                                    
+                                                                <tr>
+                                                                    <th scope="row">{{ $d->id_acara }}</th>
+                                                                    <td>{{ $d->judul }}</td>
+                                                                    <td>{{ $d->deskripsi }}</td>
+                                                                    <td>{{ $d->tipe_acara }}</td>
+                                                                    <td><img src="{{ asset('storage/photo-acara/'.$d->image) }}" alt="" width="100"></td>
+                                                                    
+                                                                    
+                                                                    <td>
+                                                                        <a href="{{route('acara.edit',['id' => $d->id_acara])}}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
+                                                                        <a data-toggle="modal" data-target="#exampleModalHapus{{ $d->id_acara }}" class="btn btn-danger"><i class="fas fa-trash-alt">Hapus</i></a>
+                                                                    </td>
+                                                                </tr>
 
-                                        <div class="custom-file">
-                                            <label for=""></label>
-                                            <input type="file" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Upload Image</label>
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="exampleModalHapus{{ $d->id_acara }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalCenterTitle">Konfirmasi Hapus Data</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <i class="material-icons">close</i>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">apakah anda yakin ingin menghapus data? <b>{{ $d->judul }}</b></div>
+                                                                            <div class="modal-footer">
+                                                                                <form action="{{ route('acara.delete',['id'=> $d->id_acara]) }}" method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="Submit" class="btn btn-primary">Konfirmasi</button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                @endforeach
+                                                                
+                                                               
+                                                            </tbody>
+                                                        </table>
+                                                    </div>      
+                                                </div>
+                                            </div>
                                         </div>
-                                                            
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <a href="{{ route('citizen.index') }}"> <- Kembali</a>
 
                     
-            <div class="lime-footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="footer-text"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            
         
         
         <!-- Javascripts -->

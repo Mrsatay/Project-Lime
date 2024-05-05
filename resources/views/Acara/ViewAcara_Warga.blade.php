@@ -113,98 +113,59 @@
                                             </li>
                                           </ul>
 
-                                          <a href="{{ route('acara.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                                        
+                                          
 
                                           <div class="tab-content">
 
-                                            @foreach ($data as $d)
-                                                
+                                              
                                             <div role="tabpanel" class="tab-pane fade in active" id="all">
-                                                <div class="card mb-3">
+                                                @foreach ($data as $d)
+                                                <div class="card mb-3 mt-3">
 
-                                                    {{-- create default image if RW not input any image --}}
-                                                    @if ($d->image)
-                                                        <img src="{{ $d->image }}" class="card-img-top img-fluid" alt="...">
-                                                    @else
-                                                        <img src="{{ asset('lime/theme/assets/images/not-available.jpeg') }}" class="card-img-top img-fluid" alt="Default Image">
-                                                    @endif
-
-                                                    <div class="card-body">
+                                                    <div class="card-body mt-2">
                                                         <h5 class="card-title">{{ $d->judul }}</h5>
+                                                        <img src="{{ asset('storage/photo-acara/'.$d->image) }}" alt="" width="100">
                                                         <p class="card-text">{{ $d->deskripsi }}</p>
                                                         <p class="card-text"><small class="text-muted">{{ $d->tanggal_penyelenggaraan }}</small></p>
                                                     </div>
                                                 </div>
+                                                @endforeach
                                             </div>
                                             
-                                            @endforeach
 
                                             <div role="tabpanel" class="tab-pane fade" id="Kegiatan">
-
-                                                <div class="card mb-3">
-                                                    <img src="{{asset('lime/theme/assets/images/AMIN.webp')}}" class="card-img-top" style="height: 75%;">
-                                                    <div class="card-body">
-                                                      <h5 class="card-title">Kedatangan 01</h5>
-                                                      <p class="card-text">- Anies dan wakilnya akan datang ke RW kita</p>
-                                                      <p class="card-text">- Kabarnya membawa 100 makanan hokben</p>
-                                                      <p class="card-text">- Gratis mobil alphard</p>
-                                                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                @foreach ($data as $d)
+                                                <!-- Tampilkan hanya acara dengan tipe 'Kegiatan' -->
+                                                @if ($d->tipe_acara == 'Kegiatan')
+                                                <div class="card mb-3 mt-3">
+                                                    <div class="card-body mt-2">
+                                                        <h5 class="card-title">{{ $d->judul }}</h5>
+                                                        <img src="{{ asset('storage/photo-acara/'.$d->image) }}" alt="" width="100">
+                                                        <p class="card-text">{{ $d->deskripsi }}</p>
+                                                        <p class="card-text"><small class="text-muted">{{ $d->tanggal_penyelenggaraan }}</small></p>
                                                     </div>
                                                 </div>
-                                                <div class="card mb-3">
-                                                    <img src="{{asset('lime/theme/assets/images/AMIN.webp')}}" class="card-img-top" style="height: 75%;">
-                                                    <div class="card-body">
-                                                      <h5 class="card-title">Kedatangan 01</h5>
-                                                      <p class="card-text">- Anies dan wakilnya akan datang ke RW kita</p>
-                                                      <p class="card-text">- Kabarnya membawa 100 makanan hokben</p>
-                                                      <p class="card-text">- Gratis mobil alphard</p>
-                                                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                    </div>
-                                                </div>
-                                                <div class="card mb-3">
-                                                    <img src="{{asset('lime/theme/assets/images/AMIN.webp')}}" class="card-img-top" style="height: 75%;">
-                                                    <div class="card-body">
-                                                      <h5 class="card-title">Kedatangan 01</h5>
-                                                      <p class="card-text">- Anies dan wakilnya akan datang ke RW kita</p>
-                                                      <p class="card-text">- Kabarnya membawa 100 makanan hokben</p>
-                                                      <p class="card-text">- Gratis mobil alphard</p>
-                                                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                    </div>
-                                                </div>
+                                                @endif
+                                                @endforeach
                                             </div>
 
                                             <div role="tabpanel" class="tab-pane fade" id="Informasi">
-                                                <div class="card mb-3">
-                                                    <img src="{{asset('lime/theme/assets/images/AMIN.webp')}}" class="card-img-top" style="height: 75%;">
-                                                    <div class="card-body">
-                                                      <h5 class="card-title">Kedatangan 01</h5>
-                                                      <p class="card-text">- Anies dan wakilnya akan datang ke RW kita</p>
-                                                      <p class="card-text">- Kabarnya membawa 100 makanan hokben</p>
-                                                      <p class="card-text">- Gratis mobil alphard</p>
-                                                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                @foreach ($data as $d)
+                                                <!-- Tampilkan hanya acara dengan tipe 'Informasi' -->
+                                                @if ($d->tipe_acara == 'Informasi')
+                                                <div class="card mb-3 mt-3">
+                                                    <div class="card-body mt-2">
+                                                        <h5 class="card-title">{{ $d->judul }}</h5>
+                                                        <img src="{{ asset('storage/photo-acara/'.$d->image) }}" alt="" width="100">
+                                                        <p class="card-text">{{ $d->deskripsi }}</p>
+                                                        <p class="card-text"><small class="text-muted">{{ $d->tanggal_penyelenggaraan }}</small></p>
                                                     </div>
                                                 </div>
-                                                <div class="card mb-3">
-                                                    <img src="{{asset('lime/theme/assets/images/AMIN.webp')}}" class="card-img-top" style="height: 75%;">
-                                                    <div class="card-body">
-                                                      <h5 class="card-title">Kedatangan 01</h5>
-                                                      <p class="card-text">- Anies dan wakilnya akan datang ke RW kita</p>
-                                                      <p class="card-text">- Kabarnya membawa 100 makanan hokben</p>
-                                                      <p class="card-text">- Gratis mobil alphard</p>
-                                                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                    </div>
-                                                </div>
-                                                <div class="card mb-3">
-                                                    <img src="{{asset('lime/theme/assets/images/AMIN.webp')}}" class="card-img-top" style="height: 75%;">
-                                                    <div class="card-body">
-                                                      <h5 class="card-title">Kedatangan 01</h5>
-                                                      <p class="card-text">- Anies dan wakilnya akan datang ke RW kita</p>
-                                                      <p class="card-text">- Kabarnya membawa 100 makanan hokben</p>
-                                                      <p class="card-text">- Gratis mobil alphard</p>
-                                                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                @endif
+                                                @endforeach
+
+
 
                                           </div>
 

@@ -29,10 +29,13 @@ route::get('/signup',[MasukController::class, 'SignUp'])->name('register'); // u
 route::post('/user/store',[MasukController::class, 'store'])->name('user.store'); // untuk Store ke Database
 
 // Acara
-route::get('/acara/manage',[AcaraController::class,'manage']); // acara bagian manage
+route::get('/acara/manage',[AcaraController::class,'manage'])->name('acara.manage'); // acara bagian manage
 route::get('/acara/view',[AcaraController::class,'view'])->name('acara.view'); // melihat acara dari POV warga
 route::get('/create',[AcaraController::class,'create'])->name('acara.create');
 route::post('/store',[AcaraController::class,'store'])->name('acara.store');
+route::get('/Acara/edit_acara/{id}', [AcaraController::class, 'edit_acara'])->name('acara.edit');
+route::put('/Acara/update_acara/{id}', [AcaraController::class, 'update_acara'])->name('acara.update');
+route::delete('/Acara/delete_acara/{id}', [AcaraController::class, 'delete_acara'])->name('acara.delete');
 
 // UMKM
 route::get('/umkm/register', [UmkmController::class, 'register'])->name('umkm.register');
@@ -51,25 +54,33 @@ route::delete('/citizen/delete_rt/{id}', [CitizenController::class, 'delete_rt']
 
 // Warga
 route::get('/citizen/warga', [CitizenController::class, 'warga'])->name('citizen.warga');
-route::get('/citizen/create_warga', [CitizenController::class, 'create_warga'])->name('citizen.create_warga');
-route::get('/citizen/update_warga', [CitizenController::class, 'update_warga'])->name('citizen.update_warga');
-route::delete('/citizen/delete_warga', [CitizenController::class, 'delete_warga'])->name('citizen.delete_warga');
+route::get('/citizen/create_warga', [CitizenController::class, 'create_warga'])->name('warga.create');
+route::POST('/citizen/store_warga', [CitizenController::class, 'store_warga'])->name('warga.store');
+route::get('/citizen/edit_warga/{id}', [CitizenController::class, 'edit_warga'])->name('warga.edit');
+route::put('/citizen/update_warga/{id}', [CitizenController::class, 'update_warga'])->name('warga.update');
+route::delete('/citizen/delete_warga/{id}', [CitizenController::class, 'delete_warga'])->name('warga.delete');
 
 
 // KK
 route::get('/citizen/kk', [CitizenController::class, 'kk'])->name('citizen.kk');
-route::get('/citizen/create_kk', [CitizenController::class, 'create_kk'])->name('citizen.create_kk');
-route::get('/citizen/update_kk', [CitizenController::class, 'update_kk'])->name('citizen.update_kk');
-route::delete('/citizen/delete_kk', [CitizenController::class, 'delete_kk'])->name('citizen.delete_kk');
+route::get('/citizen/create_kk', [CitizenController::class, 'create_kk'])->name('kk.create');
+route::POST('/citizen/store_kk', [CitizenController::class, 'store_kk'])->name('kk.store');
+route::get('/citizen/edit_kk/{id}', [CitizenController::class, 'edit_kk'])->name('kk.edit');
+route::put('/citizen/update_kk/{id}', [CitizenController::class, 'update_kk'])->name('kk.update');
+route::delete('/citizen/delete_kk/{id}', [CitizenController::class, 'delete_kk'])->name('kk.delete');
 
 // ORganisasi
 route::get('/citizen/organisasi', [CitizenController::class, 'organisasi'])->name('citizen.organisasi');
-route::get('/citizen/create_organisasi', [CitizenController::class, 'create_organisasi'])->name('citizen.create_organisasi');
-route::get('/citizen/update_organisasi', [CitizenController::class, 'update_organisasi'])->name('citizen.update_organisasi');
-route::delete('/citizen/delete_organisasi', [CitizenController::class, 'delete_organisasi'])->name('citizen.delete_organisasi');
+route::get('/citizen/create_organisasi', [CitizenController::class, 'create_organisasi'])->name('organisasi.create');
+route::POST('/citizen/store_organisasi', [CitizenController::class, 'store_organisasi'])->name('organisasi.store');
+route::get('/citizen/edit_organisasi/{id}', [CitizenController::class, 'edit_organisasi'])->name('organisasi.edit');
+route::put('/citizen/update_organisasi/{id}', [CitizenController::class, 'update_organisasi'])->name('organisasi.update');
+route::delete('/citizen/delete_organisasi/{id}', [CitizenController::class, 'delete_organisasi'])->name('organisasi.delete');
 
 //RUMAH
 route::get('/citizen/rumah', [CitizenController::class, 'rumah'])->name('citizen.rumah');
-route::get('/citizen/create_rumah', [CitizenController::class, 'create_rumah'])->name('citizen.create_rumah');
-route::get('/citizen/update_rumah', [CitizenController::class, 'update_rumah'])->name('citizen.update_rumah');
-route::delete('/citizen/delete_rumah', [CitizenController::class, 'delete_rumah'])->name('citizen.delete_rumah');
+route::get('/citizen/create_rumah', [CitizenController::class, 'create_rumah'])->name('rumah.create');
+route::post('/citizen/store_rumah', [CitizenController::class, 'store_rumah'])->name('rumah.store');
+route::get('/citizen/edit_rumah/{id}', [CitizenController::class, 'edit_rumah'])->name('rumah.edit');
+route::put('/citizen/update_rumah/{id}', [CitizenController::class, 'update_rumah'])->name('rumah.update');
+route::delete('/citizen/delete_rumah/{id}', [CitizenController::class, 'delete_rumah'])->name('rumah.delete');

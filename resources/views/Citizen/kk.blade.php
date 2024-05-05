@@ -112,8 +112,13 @@
                                         <div class="col-xl">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Data Kartu Keluarga</h5>
+                                                    
+                                                    <h4 class="mb-0">Data Kartu Keluarga</h4>
                                                     <p>Berikut adalah Data Data Kartu Keluarga dari RW 003</code>.</p>
+                                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                                        <a href="{{ route('kk.create') }}" class="btn btn-primary key ml-auto">Tambah</a>
+                                                    </div>
+
                                                     <div class="table-responsive">
                                                         <table class="table">
                                                             <thead>
@@ -129,39 +134,52 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach ($data as $d)
                                                                 <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td>1234567891234567</td>
-                                                                    <td>Jl. Pahlawan No. 123, Kota Fantasi, Negara Impian</td>
-                                                                    <td>9876543210987654</td>
-                                                                    <td>2</td>
-                                                                    <td>4</td>
-                                                                    <td>2</td>
-                                                                    
+                                                                    <th scope="row">{{ $d->id_kk }}</th>
+                                                                    <td>{{ $d->no_kk }}</td>
+                                                                    <td>{{ $d->alamat }}</td>
+                                                                    <td>{{ $d->nik_kepala_keluarga }}</td>
+                                                                    <td>{{ $d->jumlah_usia_produktif }}</td>
+                                                                    <td>{{ $d->jumlah_anggota_kk }}</td>
+                                                                    <td>{{ $d->jumlah_usia_lanjut }}</td>
+                                                                    <td>
+                                                                        <a href="{{route('kk.edit',['id' => $d->id_kk])}}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
+                                                                        <a data-toggle="modal" data-target="#exampleModalHapus{{ $d->id_kk }}" class="btn btn-danger"><i class="fas fa-trash-alt"> Hapus</i></a>
+                                                                    </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <th scope="row">2</th>
-                                                                    <td>2345678912345678</td>
-                                                                    <td>987 Dummy Street, Dummyville, Dummyland</td>
-                                                                    <td>1234567890123456</td>
-                                                                    <td>1</td>
-                                                                    <td>4</td>
-                                                                    <td>2</td>
-                                                                   
-                                                                </tr>
-                                                                <tr>
-                                                                    <th scope="row">3</th>
-                                                                    <td>3456789123456789</td>
-                                                                    <td>456 Alamat Dummy, Kota Tiruan, Negara Palsu</td>
-                                                                    <td>5555555555555555</td>
-                                                                    <td>5</td>
-                                                                    <td>7</td>
-                                                                    <td>0</td>
-                                                                    
-                                                                </tr>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="exampleModalHapus{{ $d->id_kk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalCenterTitle">Konfirmasi Hapus Data</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <i class="material-icons">close</i>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+
+                                                                                apakah anda yakin ingin menghapus data? <b>{{ $d->no_kk }}</b>                                                                         </div>
+                                                                            <div class="modal-footer">
+                                                                                <form action="{{ route('kk.delete',['id'=> $d->id_kk]) }}" method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="Submit" class="btn btn-primary">Konfirmasi</button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                @endforeach
+                                                                
                                                             </tbody>
                                                         </table>
-                                                    </div>      
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>

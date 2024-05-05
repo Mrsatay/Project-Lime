@@ -11,7 +11,7 @@
         <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         
         <!-- Title -->
-        <title>Lime - Responsive Admin Dashboard Template</title>
+        <title>Create organisasi page</title>
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -95,11 +95,11 @@
                             <div class="page-title">
                                 <nav aria-label="breadcrumb">
                                   <ol class="breadcrumb breadcrumb-separator-1">
-                                    <li class="breadcrumb-item"><a href="#">Acara</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Tambah Acara</li>
+                                    <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Form Tambah</li>
                                   </ol>
                                 </nav>
-                                <h3>Forms</h3>
+                                <h3>Form Tambah</h3>
                                 
                             </div>
                         </div>
@@ -108,47 +108,47 @@
                         <div class="col-xl">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Upload Acara</h5>
+                                    <h5 class="card-title">Tambah Data Organisasi</h5>
                                     <p> </p>
-                                    <form action="{{ route('acara.store') }}" method="POST" enctype="multipart/form-data">
+
+
+                                    <form action="{{ route('organisasi.update',['id' => $data->id_organisasi]) }}" method="POST">
                                         @csrf
-
+                                        @method("PUT")
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Acara</label>
-                                            <input type="form" name="judul" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Judul">
-                                            
-                                            @error('judul')
-                                                <small>{{ $message }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea1" rows="3" placeholder="Masukkan Deskripsi"></textarea>
-                                            @error('deskripsi')
+                                            <label for="exampleInputEmail1">Nama Organisasi</label>
+                                            <input type="form" name="nama_organisasi" value="{{ $data->nama_organisasi }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nama Pemilik">
+                                            @error( 'nama_organisasi' )
                                                 <small>{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Tipe Acara</label>
-                                            <select class="form-control custom-select" name="tipe_acara" id="exampleFormControlSelect1">
-                                                <option>Kegiatan</option>
-                                                <option>Informasi</option>
-                                            </select>
-                                            @error('tipe_acara')
+                                            <label for="exampleInputEmail1">Nama Ketua Organisasi</label>
+                                            <input type="form" name="ketua" value="{{ $data->ketua }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="jl.smerewing jos 123">
+                                            @error( 'ketua' )
                                                 <small>{{ $message }}</small>
                                             @enderror
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="image" class="form-label">Post Image</label>
-                                            <input type="file" class="form-control" id="image" class="image" name="image">
-                                            @error('image')
+                                        </div>               
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Nama Wakil Organisasi</label>
+                                            <input type="form" name="wakil" value="{{ $data->wakil }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cukup masukkan Angka saja">
+                                            @error( 'wakil' )
                                                 <small>{{ $message }}</small>
                                             @enderror
-                                        </div>
-                                                            
-                                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                                        </div>               
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Jumlah Anggota</label>
+                                            <input type="form" name="jumlah_anggota" value="{{ $data->jumlah_anggota }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cukup masukkan Angka saja">
+                                            @error( 'jummlah_anggota' )
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>               
+                                                     
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
+
+
+
                                 </div>
                             </div>
                         </div>

@@ -15,10 +15,10 @@
                 <a href="#"><i class="material-icons">inbox</i>Acara<i class="material-icons has-sub-menu">keyboard_arrow_left</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="/acara/manage">Manage</a>
+                        <a href="{{ route('acara.manage') }}">Manage</a>
                     </li>
                     <li>
-                        <a href="/acara/view">View</a>
+                        <a href="{{ route('acara.view') }}">View</a>
                     </li>
                 </ul>
             </li>

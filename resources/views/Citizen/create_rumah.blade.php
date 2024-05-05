@@ -95,11 +95,11 @@
                             <div class="page-title">
                                 <nav aria-label="breadcrumb">
                                   <ol class="breadcrumb breadcrumb-separator-1">
-                                    <li class="breadcrumb-item"><a href="#">Acara</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Tambah Acara</li>
+                                    <li class="breadcrumb-item"><a href="#">UI Elements</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Form Tambah</li>
                                   </ol>
                                 </nav>
-                                <h3>Forms</h3>
+                                <h3>Form Tambah</h3>
                                 
                             </div>
                         </div>
@@ -108,47 +108,52 @@
                         <div class="col-xl">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Upload Acara</h5>
+                                    <h5 class="card-title">Tambah Data Rumah</h5>
                                     <p> </p>
-                                    <form action="{{ route('acara.store') }}" method="POST" enctype="multipart/form-data">
+
+
+                                    <form action="{{ route('rumah.store') }}" method="POST">
                                         @csrf
-
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Acara</label>
-                                            <input type="form" name="judul" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Judul">
-                                            
-                                            @error('judul')
+                                            <label for="exampleInputEmail1">Nama Pemilik</label>
+                                            <input type="form" name="nama_pemilik" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Nama Pemilik">
+                                            @error( 'nama_pemilik' )
                                                 <small>{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea1" rows="3" placeholder="Masukkan Deskripsi"></textarea>
-                                            @error('deskripsi')
+                                            <label for="exampleInputEmail1">alamat</label>
+                                            <input type="form" name="alamat" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="jl.smerewing jos 123">
+                                            @error( 'alamat' )
                                                 <small>{{ $message }}</small>
                                             @enderror
-                                        </div>
+                                        </div>               
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Tipe Acara</label>
-                                            <select class="form-control custom-select" name="tipe_acara" id="exampleFormControlSelect1">
-                                                <option>Kegiatan</option>
-                                                <option>Informasi</option>
-                                            </select>
-                                            @error('tipe_acara')
+                                            <label for="exampleInputEmail1">Luas Bangunan</label>
+                                            <input type="form" name="luas_bangunan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cukup masukkan Angka saja">
+                                            @error( 'luas_bangunan' )
                                                 <small>{{ $message }}</small>
                                             @enderror
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="image" class="form-label">Post Image</label>
-                                            <input type="file" class="form-control" id="image" class="image" name="image">
-                                            @error('image')
+                                        </div>               
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Luas Tanah</label>
+                                            <input type="form" name="luas_tanah" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cukup masukkan Angka saja">
+                                            @error( 'luas_tanah' )
                                                 <small>{{ $message }}</small>
                                             @enderror
-                                        </div>
-                                                            
-                                        <button type="submit" class="btn btn-primary mt-5">Submit</button>
+                                        </div>               
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Jumlah Anggota KK</label>
+                                            <input type="form" name="jumlah_anggota_kk" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan total">
+                                            @error( 'jumlah_anggota_kk' )
+                                                <small>{{ $message }}</small>
+                                            @enderror
+                                        </div>               
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </form>
+
+
+
                                 </div>
                             </div>
                         </div>

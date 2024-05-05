@@ -114,6 +114,9 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title">Data Kartu Keluarga</h5>
                                                     <p>Berikut adalah Data Data Kartu Keluarga dari RW 003</code>.</p>
+                                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                                        <a href="{{ route('warga.create') }}" class="btn btn-primary key ml-auto">Tambah</a>
+                                                    </div>
                                                     <div class="table-responsive">
                                                         <table class="table">
                                                             <thead>
@@ -135,40 +138,50 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                                @foreach ($data as $d)
                                                                 <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td> Siti Nurhaliza</td>
-                                                                    <td> Jl. Melati No. 10, Kota Bahagia, Negara Sejahtera</td>
-                                                                    <td>150 m²</td>
-                                                                    <td>300 m²</td>
-                                                                    <td>300 m²</td>
-                                                                    <td>300 m²</td>
-                                                                    <td>300 m²</td>
-                                                                    <td>300 m²</td>
-                                                                    <td>300 m²</td>
-                                                                    <td>300 m²</td>
-                                                                  
-                                                                  
-                                                                    
-                                                                    
+                                                                        
+                                                                    <th scope="row">{{ $d->id_warga }}</th>
+                                                                    <td>{{ $d->nik }}</td>
+                                                                    <td>{{ $d->no_kk }}</td>
+                                                                    <td>{{ $d->nama }}</td>
+                                                                    <td>{{ $d->tempat_tanggal_lahir }}</td>
+                                                                    <td>{{ $d->jenis_kelamin }}</td>
+                                                                    <td>{{ $d->alamat }}</td>
+                                                                    <td>{{ $d->agama }}</td>
+                                                                    <td>{{ $d->status }}</td>
+                                                                    <td>{{ $d->pekerjaan }}</td>
+                                                                    <td>{{ $d->kewarganegaraan }}</td>
+                                                                    <td>
+                                                                        <a href="{{route('warga.edit',['id' => $d->id_warga])}}" class="btn btn-primary"><i class="fas fa-pen"></i>Edit</a>
+                                                                        <a data-toggle="modal" data-target="#exampleModalHapus{{ $d->id_warga }}" class="btn btn-danger"><i class="fas fa-trash-alt"> Hapus</i></a>
+                                                                    </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <th scope="row">2</th>
-                                                                    <td> Agus Susanto</td>
-                                                                    <td> Jl. Cempaka No. 25, Kota Damai, Negara Bahagia</td>
-                                                                    <td> 200 m²</td>
-                                                                    <td> 400 m²</td>
-                                                                    <td> 400 m²</td>
-                                                                    <td> 400 m²</td>
-                                                                    <td> 400 m²</td>
-                                                                    <td> 400 m²</td>
-                                                                    <td> 400 m²</td>
-                                                                    <td> 400 m²</td>
-                                                                   
-                                                                    
-                                                                    
-                                                                   
-                                                                </tr>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="exampleModalHapus{{ $d->id_warga }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalCenterTitle">Konfirmasi Hapus Data</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <i class="material-icons">close</i>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">apakah anda yakin ingin menghapus data? <b>{{ $d->nama }}</b></div>
+                                                                            <div class="modal-footer">
+                                                                                <form action="{{ route('warga.delete',['id'=> $d->id_warga]) }}" method="POST">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="Submit" class="btn btn-primary">Konfirmasi</button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                @endforeach
                                                                
                                                             </tbody>
                                                         </table>

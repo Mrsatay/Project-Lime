@@ -110,12 +110,13 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Upload Acara</h5>
                                     <p> </p>
-                                    <form action="{{ route('acara.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('acara.update',['id'=> $data->id_acara]) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        @method('PUT')
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Judul Acara</label>
-                                            <input type="form" name="judul" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Judul">
+                                            <input type="form" name="judul" value="{{ $data->judul }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Judul">
                                             
                                             @error('judul')
                                                 <small>{{ $message }}</small>
@@ -123,14 +124,14 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">Deskripsi</label>
-                                            <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea1" rows="3" placeholder="Masukkan Deskripsi"></textarea>
+                                            <textarea class="form-control" name="deskripsi" value="{{ $data->deskripsi }}" id="exampleFormControlTextarea1" rows="3" placeholder="Masukkan Deskripsi"></textarea>
                                             @error('deskripsi')
                                                 <small>{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">Tipe Acara</label>
-                                            <select class="form-control custom-select" name="tipe_acara" id="exampleFormControlSelect1">
+                                            <select class="form-control custom-select" name="tipe_acara" value="{{ $data->tipe_acara }}" id="exampleFormControlSelect1">
                                                 <option>Kegiatan</option>
                                                 <option>Informasi</option>
                                             </select>
@@ -141,10 +142,8 @@
 
                                         <div class="mb-3">
                                             <label for="image" class="form-label">Post Image</label>
-                                            <input type="file" class="form-control" id="image" class="image" name="image">
-                                            @error('image')
-                                                <small>{{ $message }}</small>
-                                            @enderror
+                                            <input type="file" class="form-control" id="image" class="image" name="image" >
+                                            
                                         </div>
                                                             
                                         <button type="submit" class="btn btn-primary mt-5">Submit</button>
