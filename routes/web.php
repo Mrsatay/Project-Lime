@@ -29,16 +29,19 @@ route::get('/signup',[MasukController::class, 'SignUp'])->name('register'); // u
 route::post('/user/store',[MasukController::class, 'store'])->name('user.store'); // untuk Store ke Database
 
 // Acara
-route::get('/acara/manage',[AcaraController::class,'manage'])->name('acara.manage'); // acara bagian manage
-route::get('/acara/view',[AcaraController::class,'view'])->name('acara.view'); // melihat acara dari POV warga
+route::get('/acara/manage',[AcaraController::class,'manage'])->name('acara.manage'); 
+route::get('/acara/view',[AcaraController::class,'view'])->name('acara.view'); 
 route::get('/create',[AcaraController::class,'create'])->name('acara.create');
-route::post('/store',[AcaraController::class,'store'])->name('acara.store');
+route::post('/acara/store',[AcaraController::class,'store_acara'])->name('acara.store');
 route::get('/Acara/edit_acara/{id}', [AcaraController::class, 'edit_acara'])->name('acara.edit');
 route::put('/Acara/update_acara/{id}', [AcaraController::class, 'update_acara'])->name('acara.update');
 route::delete('/Acara/delete_acara/{id}', [AcaraController::class, 'delete_acara'])->name('acara.delete');
 
+
+
 // UMKM
 route::get('/umkm/register', [UmkmController::class, 'register'])->name('umkm.register');
+route::post('/umkm/store', [UmkmController::class,'store'])->name('umkm.store');
 
 // Read Citizen
 route::get('/citizen', [CitizenController::class, 'index'])->name('citizen.index');

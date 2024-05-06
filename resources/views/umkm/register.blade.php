@@ -112,29 +112,29 @@
                                     <p> </p>
 
                                     
-                                    <form action="{{ route('acara.store') }}" method="POST">
+                                    <form action="#umkm.store" method="POST">
                                         @csrf
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Lengkap</label>
-                                            <input type="form" name="Nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama">
+                                            <input type="form" name="nama" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Nama">
                                             
-                                            @error('Nama')
+                                            @error('nama')
                                                 <small>{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">alamat</label>
-                                            <textarea class="form-control" name="Alamat" id="exampleFormControlTextarea1" rows="3" placeholder="Masukkan Alamat"></textarea>
-                                            @error('Alamat')
+                                            <textarea class="form-control" name="alamat" id="exampleFormControlTextarea1" rows="3" placeholder="Masukkan Alamat"></textarea>
+                                            @error('alamat')
                                                 <small>{{ $message }}</small>
                                             @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Usia</label>
-                                            <input type="form" name="Usia" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Usia">
+                                            <input type="form" name="usia" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukan Usia">
                                             
-                                            @error('Usia')
+                                            @error('usia')
                                                 <small>{{ $message }}</small>
                                             @enderror
                                         </div>

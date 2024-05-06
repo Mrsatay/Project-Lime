@@ -120,6 +120,7 @@
 
                                               
                                             <div role="tabpanel" class="tab-pane fade in active" id="all">
+                                                
                                                 @foreach ($data as $d)
                                                 <div class="card mb-3 mt-3">
 

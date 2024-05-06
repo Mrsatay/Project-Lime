@@ -28,7 +28,7 @@ class AcaraController extends Controller
         return view('Acara.create');
     }
 
-    public function store(Request $request)
+    public function store_acara(Request $request)
     {
         
 
@@ -40,7 +40,7 @@ class AcaraController extends Controller
         ]);
 
         if($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
-
+        
         $photo = $request->file('image');
         $filename = date('Y-m-d').$photo->getClientOriginalName();
         $path = 'photo-acara/'.$filename;
